@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HW14</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <img
+      src="./public/electric-iron.jpg"
+      alt="electric-iron"
+      width="490"
+      height="362"
+    />
+    <br />
+    <button class="buyButton">Купити</button>
+    <form class="form">
+      <div>
+        <input type="text" name="full_name" id="full_name" />
+        <label for="full_name">ПІБ</label>
+      </div>
+      <div>
+        <select type="select" name="city" id="city">
+          <option value="kiyv">Київ</option>
+          <option value="lviv">Львів</option>
+          <option value="dnipro">Дніпро</option>
+        </select>
+        <label for="city">Місто</label>
+      </div>
+      <div>
+        <input
+          type="number"
+          name="novaPoshtaBranch"
+          id="novaPoshtaBranch"
+          min="1"
+          max="200"
+        />
+        <label for="novaPoshtaBranch">Відділення НП</label>
+      </div>
+      <div>
+        <select type="select" name="payment_type" id="payment_type">
+          <option value="prepay">Передоплата</option>
+          <option value="postpay">Післяплата</option>
+        </select>
+        <label for="payment_type">Тип оплати</label>
+      </div>
+      <div>
+        <input
+          type="number"
+          name="quantity"
+          id="quantity"
+          min="1"
+          max="1000"
+        />
+        <label for="quantity">Кількість товару</label>
+      </div>
+      <div>
+        <textarea name="comment" id="comment"></textarea>
+        <label for="comment">Коментар</label>
+      </div>
+      <button type="submit" class="submit">Відправити</button>
+    </form>
+    <script src="script.js"></script>
+  </body>
+</html>

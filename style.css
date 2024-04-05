@@ -1,0 +1,38 @@
+input,
+select,
+textarea {
+  width: 200px;
+  padding: 3px 0;
+  box-sizing: border-box;
+}
+
+textarea {
+  height: 100px;
+  resize: none;
+}
+
+button {
+  width: 120px;
+}
+
+span {
+  color: red;
+}
+
+.buyButton {
+  margin: 40px 80px;
+}
+
+.form {
+  padding: 10px 0 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid black;
+  width: 350px;
+  visibility: hidden;
+}
+
+.form.visible {
+  visibility: visible;
+}
