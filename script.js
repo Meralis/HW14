@@ -27,7 +27,8 @@ function handleChange(e) {
 inputs.forEach(input => input.addEventListener('input', handleChange));
 
 function validateForm() {
-    document.querySelectorAll('.warning').forEach(warning => warning.remove());
+    const warnings = document.querySelectorAll('.warning');
+    warnings.forEach(warning => warning.remove());
     let isFormValid = true;
     inputs.forEach(input => {
         if (!input.value) {
@@ -38,6 +39,36 @@ function validateForm() {
     return isFormValid;
 }
 
+function buildOrderBlock(formObject) {
+    const orderBlock = document.createElement('div');
+
+    const fullNameElement = document.createElement('p');
+    fullNameElement.textContent = `ПІБ: ${formObject.full_name}`;
+    orderBlock.appendChild(fullNameElement);
+
+    const cityElement = document.createElement('p');
+    cityElement.textContent = `Місто: ${formObject.city}`;
+    orderBlock.appendChild(cityElement);
+
+    const novaPoshtaElement = document.createElement('p');
+    novaPoshtaElement.textContent = `Відділення НП: ${formObject.novaPoshtaBranch}`;
+    orderBlock.appendChild(novaPoshtaElement);
+
+    const paymentTypeElement = document.createElement('p');
+    paymentTypeElement.textContent = `Тип оплати: ${formObject.payment_type}`;
+    orderBlock.appendChild(paymentTypeElement);
+
+    const quantityElement = document.createElement('p');
+    quantityElement.textContent = `Кількість: ${formObject.quantity}`;
+    orderBlock.appendChild(quantityElement);
+
+    const commentElement = document.createElement('p');
+    commentElement.textContent = `Коментар: ${formObject.comment}`;
+    orderBlock.appendChild(commentElement);
+
+    return orderBlock;
+}
+
 function handleSubmit(e) {
     e.preventDefault();
     if (validateForm()) {
@@ -46,7 +77,9 @@ function handleSubmit(e) {
         formData.forEach((value, key) => {
             formObject[key] = value;
         });
-        console.log(formObject);
+        const orderBlock = buildOrderBlock(formObject);
+        form.classList.remove('visible');
+        form.parentElement.insertBefore(orderBlock, form);
         form.reset();
     }
 }
