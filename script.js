@@ -43,8 +43,7 @@ function handleChange(e) {
         input.parentElement.querySelectorAll(`${emptyWarningMsg.selector}, ${incorrectWarningMsg.selector}`).forEach(warning => warning.remove());
         if (!input.value) {
             buildAddInsertWarning(emptyWarningMsg, input);
-        }
-        if (input.value) {
+        } else {
             validateInput(input);
         }
     }
