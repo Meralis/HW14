@@ -21,7 +21,7 @@ const regexes = {
 buyButton.addEventListener('click', () => form.classList.add('visible'));
 form.addEventListener('input', handleChange);
 
-function buildAddInsertWarning(warningMsg, input) {
+function insertWarning(warningMsg, input) {
     const span = document.createElement('span');
     span.textContent = warningMsg.message;
     span.classList.add(warningMsg.className);
@@ -32,7 +32,7 @@ function validateInput(input) {
     const regex = regexes[input.name] || null;
     let isInputValid = regex ? regex.test(input.value) : true;
     if (!isInputValid) {
-        buildAddInsertWarning(incorrectWarningMsg, input);
+        insertWarning(incorrectWarningMsg, input);
     }
     return isInputValid;
 }
@@ -42,7 +42,7 @@ function handleChange(e) {
         const input = e.target;
         input.parentElement.querySelectorAll(`${emptyWarningMsg.selector}, ${incorrectWarningMsg.selector}`).forEach(warning => warning.remove());
         if (!input.value) {
-            buildAddInsertWarning(emptyWarningMsg, input);
+            insertWarning(emptyWarningMsg, input);
         } else {
             validateInput(input);
         }
@@ -54,7 +54,7 @@ function validateForm() {
     let isFormValid = true;
     inputs.forEach(input => {
         if (!input.value) {
-            buildAddInsertWarning(emptyWarningMsg, input);
+            insertWarning(emptyWarningMsg, input);
             isFormValid = false;
         } else {
             isFormValid = validateInput(input) && isFormValid;
